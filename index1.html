@@ -1,0 +1,191 @@
+<!-- @format -->
+<!DOCTYPE html>
+<style>
+  body {
+    background-color: powderblue;
+    padding: 20px;
+    font-size: 20px;
+    border-top: 20px;
+  }
+
+  title {
+    color: black;
+  }
+
+  h1 {
+    font-size: 300%;
+    color: rgba(3, 3, 255, 0.928);
+  }
+
+  div {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    transition: 0.3s;
+    line-height: 50px;
+  }
+
+  .ball1 {
+    background-color: yellow;
+    border: 5px solid gray;
+    width: 100px;
+    height: 100px;
+  }
+
+  .ball2 {
+    background-color: orange;
+    border-width: 5px;
+    border-color: rebeccapurple;
+    border-style: double;
+  }
+
+  .ball3 {
+    background-color: gray;
+  }
+
+  .ball4 {
+    background-color: brown;
+  }
+
+  .ball5 {
+    background-color: rgb(125, 101, 220);
+    width: 150px;
+    height: 150px;
+  }
+
+  button {
+    background-color: white;
+    border: darkblue;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 10px;
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+  }
+
+  h2 {
+    color: rgb(3, 32, 69);
+    border-color: rgba(0, 255, 123, 0.174);
+    border: 10px;
+    padding: 10px;
+    position: static;
+  }
+
+  #coding_picture {
+    position: fixed;
+    top: 20rem;
+    right: 1rem;
+  }
+</style>
+<html>
+
+<head>
+  <center>
+    <title>my first project</title>
+</head>
+<h1>my website second page</h1>
+<h2>THANK YOU FOR VISITING MY WEBPAGE</h2>
+
+<body>
+  <div class="ball1" onclick="onBall1Click()">growing</div>
+  <div class="ball2" onclick="onBall2Click()">+-50</div>
+  <div class="ball3" onclick="onBall3Click()">off</div>
+  <div class="ball4" onclick="onBall4Click()">turn 3</div>
+  <div class="ball5" onclick="onBall5Click()"> this ball does nothing</div>
+  <div><img
+      src="https://static.boredpanda.com/blog/wp-content/uploads/2014/01/animal-children-photography-elena-shumilova-2.jpg"
+      style="display: none;" alt="random pic" id="coding_picture" width="500" height="500">
+    <img>
+    <button type="button" onclick="hidepicture()" id="hidebutton">click here to show the picture</button>
+  </div>
+  </center>
+</body>
+<script>
+  var ball1Size = 100;
+  var ball2Size = 100;
+  var ball2SizeStep = 50;
+  var ball5Size = 1;
+  var isGrowing = true;
+
+  function onBall1Click() {
+    var ball1 = document.querySelector(".ball1");
+    ball1Size = ball1Size + 50;
+    ball1.innerText = ball1Size;
+    ball1.style.width = ball1Size + 'px';
+    ball1.style.height = ball1Size + 'px';
+    console.log(ball1.style.width)
+    if (ball1Size == 400) {
+      ball1Size = 50;
+    } if (ball1Size == 400) {
+      ball1.style.backgroundColor = "red";
+    } else {
+      ball1.style.backgroundColor = "yellow";
+    }
+  }
+
+
+  function onBall2Click() {
+    var ball2 = document.querySelector(".ball2");
+    ball2.innerText = ball2Size;
+    ball2.style.width = ball2Size + 'px';
+    ball2.style.height = ball2Size + 'px';
+    if (isGrowing && ball2Size >= 400) {
+      isGrowing = false;
+    }
+    if (!isGrowing && ball2Size <= 100) {
+      isGrowing = true;
+    }
+    if (isGrowing) {
+      ball2Size = ball2Size + ball2SizeStep;
+    } else {
+      ball2Size = ball2Size - ball2SizeStep;
+    }
+  }
+  function onBall3Click() {
+    var ball3 = document.querySelector(".ball3");
+    if (ball3.innerText == "on") {
+      ball3.innerText = "off";
+      ball3.style.backgroundColor = "gray";
+    } else {
+      ball3.innerText = "on";
+      ball3.style.backgroundColor = "yellow";
+    }
+  }
+  function onBall4Click() {
+    var ball4 = document.querySelector(".ball4");
+    var ball3 = document.querySelector(".ball3");
+    ball4.innerText = "prompet";
+    if (ball3.innerText == "on") {
+      var givensize = prompt("enter the size of the ball");
+      ball4.innerText = givensize;
+      ball4.style.width = givensize + 'px';
+      ball4.style.height = givensize + 'px';
+      if (givensize > 1000) {
+        alert("the size of the ball is too big enter number bigger then 1000 please try again");
+        ball4.innerText = 100;
+        ball4.style.width = 100 + 'px';;
+        ball4.style.height = 100 + 'px';;
+      }
+    }
+  }
+
+  function onBall5Click() {
+    alert("alert does nothing")
+  }
+  function hidepicture() {
+    var y = document.getElementById("coding_picture");
+    if (y.style.display === "none") {
+      y.style.display = "hidden";
+      document.getElementById("hidebutton").innerText = "click again to hide the picture";
+    } else {
+      y.style.display = "none";
+      document.getElementById("hidebutton").innerText = "click again to show the picture";
+    }
+  }
+</script>
+
+</html>
