@@ -3,6 +3,7 @@
 <style>
 </style>
 <html lang="en-us">
+
 <head>
   <link rel="stylesheet" href="CSS/page1.css">
   <title>my first project</title>
@@ -11,14 +12,15 @@
 <div class="dropdown">
   <button onclick="dropdown()" class="dropbtn">choose time zone</button>
   <div id="myDropdown" class="dropdown-content">
-    <a onclick="fetchtimeLondon()" href="#">London</a>
-    <a onclick="fetchtimeNewYork()" href="#">New York</a>
-    <a onclick="fetchtimeTokyo()" href="#">Tokyo</a>
-    <a onclick="fetchtimeJerusalem()" href="#">Jerusalem</a>
-    <a onclick="fetchtimeManila()" href="#">Manila</a>
+    <a onclick="fetchTime(Cities[0])" href="#">London</a>
+    <a onclick="fetchTime(Cities[1])" href="#">Jerusalem</a>
+    <a onclick="fetchTime(Cities[2])" href="#">Tokyo</a>
+    <a onclick="fetchTime(Cities[3])" href="#">Manila</a>
+    <a onclick="fetchTime(Cities[4])" href="#">New York</a>
   </div>
 </div>
 <!--log in/username/password-->
+
 <body>
   <script src="js/page1.js"></script>
   <center>
@@ -41,7 +43,8 @@
           </a></p>
         <img src="./images/help.ico" alt="help" id="help" width="50" height="50" onclick="popup()">
         <div class="popup">
-          <span class="popuptext" id="mypopup">welcome to my website,the username and passwrod are elichy and 1234 respectively</span>
+          <span class="popuptext" id="mypopup">welcome to my website,the username and passwrod are elichy and 1234
+            respectively</span>
         </div>
   </center>
   <div>

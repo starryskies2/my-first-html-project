@@ -1,10 +1,18 @@
 /** @format */
 
-var h = 0; //global variables
-var m = 0;
-var s = 0;
-var session = "AM";
+let h = 0; //global variables
+let m = 0;
+let s = 0;
+let session = "AM";
 let t;
+const Cities = [
+'Europe/London',
+'Asia/Jerusalem',
+'Asia/Tokyo',
+'Asia/Manila',
+'America/New_York',
+]
+
 function random() {
   alert("i lied,it does something");
 }
@@ -85,6 +93,20 @@ function showTime(hour, minute, seconds) {
   var m = minute; // 0 - 59
   var s = seconds; // 0 - 59
   var session = "AM";
+  if (s <= 59) {
+    s = s + 1;
+  } else {
+    s = s - 60;
+    m = m + 1;
+  }
+  if (m == 59) {
+    m = m - 59;
+    h = h + 1;
+  }
+  if (h == 24) {
+    h = 0;
+  }
+
   if (h > 12) {
     session = "PM";
   } else {
@@ -107,7 +129,7 @@ function showTime(hour, minute, seconds) {
     if (h == 24) {
       h = 0;
     }
-
+  
     if (h > 12) {
       session = "PM";
     } else {
@@ -139,45 +161,9 @@ window.onclick = function (event) {
     }
   }
 };
-
-async function fetchtimeLondon() {
-  const api_london =
-    "https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/London";
-  const response = await fetch(api_london);
-  const data = await response.json();
-  const { hour, minute, seconds } = data;
-  showTime(hour, minute, seconds);
-}
-
-async function fetchtimeNewYork() {
-  const api_NewYork =
-    "https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York";
-  const response = await fetch(api_NewYork);
-  const data = await response.json();
-  const { hour, minute, seconds } = data;
-  showTime(hour, minute, seconds);
-}
-
-async function fetchtimeJerusalem() {
-  const api_Jerusalem =
-    "https://www.timeapi.io/api/Time/current/zone?timeZone=Asia/Jerusalem";
-  const response = await fetch(api_Jerusalem);
-  const data = await response.json();
-  const { hour, minute, seconds } = data;
-  showTime(hour, minute, seconds);
-}
-
-async function fetchtimeManila() {
-  const api_Manila = "https://www.timeapi.io/api/Time/current/zone?timeZone=Asia/Manila";
-  const response = await fetch(api_Manila);
-  const data = await response.json();
-  const { hour, minute, seconds } = data;
-  showTime(hour, minute, seconds);
-}
-
-async function fetchtimeTokyo() {
-  const api_Tokyo = "https://www.timeapi.io/api/Time/current/zone?timeZone=%09Asia/Tokyo";
-  const response = await fetch(api_Tokyo);
+async function fetchTime(city) {
+  const api = `https://www.timeapi.io/api/Time/current/zone?timeZone=${city}`;
+  const response = await fetch(api);
   const data = await response.json();
   const { hour, minute, seconds } = data;
   showTime(hour, minute, seconds);
