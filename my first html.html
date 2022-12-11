@@ -1,240 +1,28 @@
 <!--format-->
 <!DOCTYPE html>
 <style>
-  body {
-    background-color: powderblue;
-    padding: 20px;
-    font-size: 20px;
-    border-top: 20px;
-  }
-
-  title {
-    color: black;
-  }
-
-  h1 {
-    font-size: 300%;
-    color: rgba(3, 3, 255, 0.928);
-  }
-
-  switch {
-    size: 100px;
-  }
-
-  .button {
-    background-color: white;
-    border: darkblue;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 10px;
-    text-align: center;
-  }
-
-  .button:hover{
-    box-shadow: rgba(5, 30, 197, 0.953) 0px 10px 10px;
-    background-color: white;
-    -webkit-transform: translateY(0.9px);
-    transform: translateY(-0.9px);
-  }
-
-  #audio {
-    position: fixed;
-    top: 15rem;
-    right: 1rem;
-    margin-top: 100px;
-    margin: left 50px;
-    box-shadow: rgba(1, 7, 42, 0.953) 0px 10px 10px;
-    background-color: white;
-    -webkit-transform: translateY(0.9px);
-    transform: translateY(-0.9px);
-  }
-  h2 {
-    color: rgb(3, 32, 69);
-    border-color: rgba(0, 255, 123, 0.174);
-    border: 10px;
-    padding: 10px;
-    position: static;
-  }
-
-  input {
-    width: 300px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    height: fit-content;
-  }
-
-  input:focus {
-    border-color: rgb(9, 22, 26);
-    border-width: 3px;
-  }
-
-  #loggedin {
-    width: fit-content;
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 10px;
-    background-color: white;
-    border: darkblue;
-  }
-
-  #randomnumber {
-    background-color: white;
-    border: darkblue;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 10px;
-    position: absolute;
-    top: 40px;
-    left: 70px;
-  }
-  #randomnumber:hover{
-    box-shadow: rgba(5, 30, 197, 0.953) 0px 10px 10px;
-    background-color: white;
-    -webkit-transform: translateY(0.9px);
-    transform: translateY(-0.9px);
-  }
-  #result {
-    width: fit-content;
-    height: fit-content;
-    text-align: center;
-    padding: 3px;
-    margin: 3px;
-    border: 3px solid rgb(6, 105, 138);
-    box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 10px;
-    position: fixed;
-  }
-
-  #toggleresult {
-    position: fixed;
-    bottom: 2rem;
-    left: 1rem;
-  }
-
-  #clockstart {
-    width: 100px;
-    padding: 2px;
-    margin: 2px;
-    border: 4px solid lightblue;
-    box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
-    position: fixed;
-    top: 2rem;
-    right: 1rem;
-  }
-
-  #MyClockDisplay {
-    position: fixed;
-    bottom: 1.2rem;
-    right: 1rem;
-    color: #1c383e;
-    font-size: 50px;
-    font-family: Orbitron;
-    letter-spacing: 4.5px;
-  }
-
-
-  .dropbtn {
-    position: fixed;
-    top: 2rem;
-    right: 1rem;
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .dropbtn:hover,
-  .dropbtn:focus {
-    background-color: #3498DB;
-  }
-
-  .dropdown {
-    position: fixed;
-    display: inline-block;
-  }
-
-  .dropdown-content {
-    position: fixed;
-    top: 5.2rem;
-    right: 1rem;
-    display: none;
-    background-color: #3498DB;
-    min-width: 158px;
-    z-index: 1;
-  }
-
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: solid;
-    display: block;
-  }
-
-  .dropdown-content a:hover {
-    background-color: rgba(142, 158, 235, 0.874);
-  }
-
-  .show {
-    display: block;
-  }
-
-  #help {
-    position: fixed;
-    bottom: 10px;
-  }
-
-  #help:hover {
-    box-shadow: rgba(0, 0, 0, 0.808) 0px 2px 2px;
-  }
-
-  #popup {
-    position: fixed;
-    bottom: 20px;
-  }
-
-  #mypopup {
-    visibility: hidden;
-    position: absolute
-  }
-
-  #mypopup.show {
-    visibility: visible;
-    position: fixed;
-    bottom: 10px;
-    left: 39rem;
-    width: 200px;
-    background-color: rgb(33, 40, 228);
-    color: #fff;
-    text-align: center;
-    border-radius: 7px;
-    padding: 5px 0;
-  }
 </style>
-
 <html lang="en-us">
-<center>
-
-  <head>
-    <title>my first project</title>
-  </head>
-  <!--dropdown for the api global clock-->
-  <div class="dropdown">
-    <button onclick="dropdown()" class="dropbtn">choose time zone</button>
-    <div id="myDropdown" class="dropdown-content">
-      <a onclick="fetchtimeLondon()" href="#">London</a>
-      <a onclick="fetchtimeNewYork()" href="#">New York</a>
-      <a onclick="fetchtimeTokyo()" href="#">Tokyo</a>
-      <a onclick="fetchtimeJerusalem()" href="#">Jerusalem</a>
-      <a onclick="fetchtimeManila()" href="#">Manila</a>
-    </div>
+<head>
+  <link rel="stylesheet" href="CSS/page1.css">
+  <title>my first project</title>
+</head>
+<!--dropdown for the api global clock-->
+<div class="dropdown">
+  <button onclick="dropdown()" class="dropbtn">choose time zone</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a onclick="fetchtimeLondon()" href="#">London</a>
+    <a onclick="fetchtimeNewYork()" href="#">New York</a>
+    <a onclick="fetchtimeTokyo()" href="#">Tokyo</a>
+    <a onclick="fetchtimeJerusalem()" href="#">Jerusalem</a>
+    <a onclick="fetchtimeManila()" href="#">Manila</a>
   </div>
-  <!--log in/username/password-->
-
-  <body>
-    <img src="C:\Users\97252\Desktop\learning coding\projects and codes\my first html project\images\Project 02.png"
-      width="700" height="250" alt="welcome pic">
+</div>
+<!--log in/username/password-->
+<body>
+  <script src="js/page1.js"></script>
+  <center>
+    <img src="./images/Project 02.png" width="700" height="250" alt="welcome pic">
     <form>
       <br />
       <input type="text" id="username" name="username" placeholder="Enter Username" autocomplete="off" />
@@ -245,224 +33,37 @@
     </form>
     <button type="button" class="button" id="loginbutton" style="display:block " onclick="login()"> log in
       </div>
-      <form action="C:\Users\97252\Desktop\learning coding\projects and codes\my first html project\index1.html">
+      <form action="./index1.html">
         <input id="loggedin" type="submit" value="log me in" style="display: none" />
 
         <p><a href="https://github.com/starryskies2">
-            <img
-              src="C:\Users\97252\Desktop\learning coding\projects and codes\my first html project\images\GitHub_Logo.png"
-              alt="mygithub" id="github" width="140" height="50">
+            <img src="./images/GitHub_Logo.png" alt="mygithub" id="github" width="140" height="50">
           </a></p>
-        <img src="C:\Users\97252\Desktop\learning coding\projects and codes\my first html project\images\help.ico"
-          alt="help" id="help" width="50" height="50" onclick="popup()">
+        <img src="./images/help.ico" alt="help" id="help" width="50" height="50" onclick="popup()">
         <div class="popup">
-          <span class="popuptext" id="mypopup">welcome to my website,the username and passwrod are elichy and 1234
-            respectively</span>
+          <span class="popuptext" id="mypopup">welcome to my website,the username and passwrod are elichy and 1234 respectively</span>
         </div>
-</center>
-<div>
-  <button type="button" onclick="random()" id="randomnumber">this button does nothing</button>
-  <div id="MyClockDisplay" class=clock onload="showTime()"></div>
-
-  <h2>calculator</h2>
-  use one of the buttons to perfum a calculation
-  <button type="button" class="button" onclick="times2()" value="calculate">multplied by 2 </button>
-  <button type="button" class="button" onclick="times3()" value="calculate">multplied by 3 </button>
-  <button type="button" class="button" onclick="divide()" value="calculate">divide by 2 </button>
-  <button type="button" class="button" id="toggleresult" onclick="hideresult()">show result</button>
-  <div id="result" style="display:none"> calculator result will show up here
-  </div>
-
+  </center>
   <div>
-    <audio controls id="audio"
-      src="C:\Users\97252\Desktop\learning coding\projects and codes\my first html project\voice\inferno.mp3">
-  </div>
-  </audio>
+    <button type="button" onclick="random()" id="randomnumber">this button does nothing</button>
+    <div id="MyClockDisplay" class=clock onload="showTime()"></div>
 
-  <body>
+    <h2>calculator</h2>
+    use one of the buttons to perfum a calculation
+    <button type="button" class="button" onclick="times2()" value="calculate">multplied by 2 </button>
+    <button type="button" class="button" onclick="times3()" value="calculate">multplied by 3 </button>
+    <button type="button" class="button" onclick="divide()" value="calculate">divide by 2 </button>
+    <button type="button" class="button" id="toggleresult" onclick="hideresult()">show result</button>
+    <div id="result" style="display:none"> calculator result will show up here
+    </div>
+    <div>
+      <audio controls id="audio"
+        src="C:\Users\97252\Desktop\learning coding\projects and codes\my first html project\voice\inferno.mp3">
+    </div>
+    </audio>
+
+    <body>
 
 </html>
-
 <script>
-  var h = 0; //global variables
-  var m = 0;
-  var s = 0
-  var session = "AM";
-  let t;
-  function random() {
-    alert("i lied,it does something")
-  }
-  function times2() {
-    let x = prompt("please enter a number and you will get the number times 2");
-    let y = 2;
-    let z = x * y;
-    document.getElementById("result").innerHTML = z;
-  }
-  function times3() {
-    let x = prompt("please enter a number and you will get the number times 2");
-    let y = 3;
-    let z = x * y;
-    document.getElementById("result").innerHTML = z;
-  }
-
-  function divide() {
-    let x = prompt("please enter a number and you will get the number divided by 2");
-    let y = 2;
-    let z = x / y;
-    document.getElementById("result").innerHTML = z;
-  }
-
-  function hideresult() {
-    var y = document.getElementById("result");
-    var x = document.getElementById("toggleresult");
-    if (y.style.display === "none") {
-      y.style.display = "block";
-      document.getElementById("toggleresult").innerText = "click again to hide the result";
-    } else {
-      y.style.display = "none";
-      document.getElementById("toggleresult").innerText = "click again to show the result";
-    }
-  }
-  function login() {
-    var nameInput = document.getElementById("username");
-    var Password = document.getElementById("password");
-    var Terms = document.getElementById("myCheck");
-    if (nameInput.value !== "elichay" && Password.value !== "1234") {
-      alert("Incorrect username or passwrd please verify them and try again");
-    } else {
-      alert("well done you logged into the website");
-      hidelog();
-    }
-  }
-
-  function popup() {
-    var popup = document.getElementById("mypopup");
-    popup.classList.toggle("show");
-  }
-
-  function hidelog() {
-    var loggedin = document.getElementById("loggedin");
-    var y = document.getElementById("loggedin");
-    var x = document.getElementById("loginbutton")
-    if (y.style.display === "none") {
-      y.style.display = "block";
-      x.style.display = "none";
-    } else {
-      y.style.display = "none";
-
-    }
-  }
-
-  function hideclock() {
-    var clockstart = document.getElementById("MyClockDisplay");
-    var y = document.getElementById("MyClockDisplay");
-    if (y.style.display === "none") {
-      y.style.display = "block";
-      document.getElementById("clockstart").innerText = "click again to hide the clock";
-    } else {
-      y.style.display = "none";
-      document.getElementById("clockstart").innerText = "click again to show the clock";
-    }
-  }
-  function showTime(hour, minute, seconds) {
-    clearInterval(t)
-    var h = hour; // 0 - 23
-    var m = minute; // 0 - 59
-    var s = seconds; // 0 - 59
-    var session = "AM";
-    if (h > 12) {
-      session = "PM";
-    }
-    else {
-      session = "AM";
-    }
-    function clicktimer() {
-      var time = h + ":" + m + ":" + s + " " + session;
-      document.getElementById("MyClockDisplay").innerText = time;
-      document.getElementById("MyClockDisplay").textContent = time;
-      if (s <= 59) {
-        s = s + 1
-      } else {
-        s = s - 60
-        m = m + 1
-      }
-      if (m == 59) {
-        m = m - 59
-        h = h + 1
-      }
-      if (h == 24) {
-        h = 0;
-      }
-
-      if (h > 12) {
-        session = "PM";
-      }
-      else {
-        session = "AM";
-      }
-    }
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
-    t = setInterval(function () { clicktimer() }, 1000)
-  }
-  function dropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-
-  async function fetchtimeLondon() {
-    const api_london = 'https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/London'
-    const response = await fetch(api_london);
-    const data = await response.json()
-    const { hour, minute, seconds } = data;
-    showTime(hour, minute, seconds)
-  }
-
-  async function fetchtimeNewYork() {
-    const api_NewYork = 'https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York'
-    const response = await fetch(api_NewYork);
-    const data = await response.json()
-    const { hour, minute, seconds } = data;
-    showTime(hour, minute, seconds)
-  }
-
-  async function fetchtimeJerusalem() {
-    const api_Jerusalem = 'https://www.timeapi.io/api/Time/current/zone?timeZone=Asia/Jerusalem'
-    const response = await fetch(api_Jerusalem);
-    const data = await response.json()
-    const { hour, minute, seconds } = data;
-    showTime(hour, minute, seconds)
-  }
-
-
-  async function fetchtimeManila() {
-    const api_Manila = 'https://www.timeapi.io/api/Time/current/zone?timeZone=Asia/Manila'
-    const response = await fetch(api_Manila);
-    const data = await response.json()
-    const { hour, minute, seconds } = data;
-    showTime(hour, minute, seconds)
-  }
-
-  async function fetchtimeTokyo() {
-    const api_Tokyo = 'https://www.timeapi.io/api/Time/current/zone?timeZone=%09Asia/Tokyo'
-    const response = await fetch(api_Tokyo);
-    const data = await response.json()
-    const { hour, minute, seconds } = data;
-    showTime(hour, minute, seconds)
-  }
 </script>

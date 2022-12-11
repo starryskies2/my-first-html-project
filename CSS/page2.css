@@ -1,0 +1,79 @@
+body {
+    background-color: powderblue;
+    padding: 20px;
+    font-size: 20px;
+    border-top: 20px;
+  }
+
+  title {
+    color: black;
+  }
+
+  h1 {
+    font-size: 300%;
+    color: rgba(3, 3, 255, 0.928);
+  }
+
+  div {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    transition: 0.3s;
+    line-height: 50px;
+  }
+
+  .ball1 {
+    background-color: yellow;
+    border: 5px solid gray;
+    width: 100px;
+    height: 100px;
+  }
+
+  .ball2 {
+    background-color: orange;
+    border-width: 5px;
+    border-color: rebeccapurple;
+    border-style: double;
+  }
+
+  .ball3 {
+    background-color: gray;
+  }
+
+  .ball4 {
+    background-color: brown;
+  }
+
+  .ball5 {
+    background-color: rgb(125, 101, 220);
+    width: 150px;
+    height: 150px;
+  }
+
+  button {
+    background-color: white;
+    border: darkblue;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.50) 0px 5px 10px;
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+  }
+
+  h2 {
+    color: rgb(3, 32, 69);
+    border-color: rgba(0, 255, 123, 0.174);
+    border: 10px;
+    padding: 10px;
+    position: static;
+  }
+
+  #coding_picture {
+    position: fixed;
+    top: 20rem;
+    right: 1rem;
+  }
