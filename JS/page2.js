@@ -76,7 +76,7 @@ function onBall5Click() {
 function hidepicture() {
   var y = document.getElementById("coding_picture");
   if (y.style.display === "none") {
-    y.style.display = "hidden";
+    y.style.display = "block";
     document.getElementById("hidebutton").innerText = "click again to hide the picture";
   } else {
     y.style.display = "none";
