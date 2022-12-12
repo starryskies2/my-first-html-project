@@ -1,15 +1,17 @@
 /** @format */
 
- //global variables
+let h = 0; //global variables
+let m = 0;
+let s = 0;
 let session = "AM";
 let t;
 const Cities = [
-  "Europe/London",
-  "Asia/Jerusalem",
-  "Asia/Tokyo",
-  "Asia/Manila",
-  "America/New_York",
-];
+'Europe/London',
+'Asia/Jerusalem',
+'Asia/Tokyo',
+'Asia/Manila',
+'America/New_York',
+]
 
 function random() {
   alert("i lied,it does something");
@@ -87,54 +89,57 @@ function hideclock() {
 }
 function showTime(hour, minute, seconds) {
   clearInterval(t);
+  var h = hour; // 0 - 23
+  var m = minute; // 0 - 59
+  var s = seconds; // 0 - 59
   var session = "AM";
-  if (seconds <= 58) {
-    seconds = seconds + 1;
+  if (s <= 59) {
+    s = s + 1;
   } else {
-    seconds = 0;
-    minute = minute + 1;
+    s = s - 60;
+    m = m + 1;
   }
-  if (minute == 58) {
-    minute = 0;
-    hour = hour + 1;
+  if (m == 59) {
+    m = m - 59;
+    h = h + 1;
   }
-  if (hour == 24) {
-    hour = 0;
+  if (h == 24) {
+    h = 0;
   }
 
-  if (hour > 12) {
+  if (h > 12) {
     session = "PM";
   } else {
     session = "AM";
   }
   function clicktimer() {
-    var time = hour + ":" + minute + ":" + seconds + " " + session;
+    var time = h + ":" + m + ":" + s + " " + session;
     document.getElementById("MyClockDisplay").innerText = time;
     document.getElementById("MyClockDisplay").textContent = time;
-    if (seconds <= 58) {
-      seconds = seconds + 1;
+    if (s <= 59) {
+      s = s + 1;
     } else {
-      seconds = 0;
-      minute = minute + 1;
+      s = s - 60;
+      m = m + 1;
     }
-    if (minute == 58) {
-      minute = 0;
-      hour = hour + 1;
+    if (m == 59) {
+      m = m - 59;
+      h = h + 1;
     }
-    if (hour == 24) {
-      hour = 0;
+    if (h == 24) {
+      h = 0;
     }
-
-    if (hour > 12) {
+  
+    if (h > 12) {
       session = "PM";
     } else {
       session = "AM";
     }
   }
-  hour = hour < 10 ? "0" + hour : hour;
-  minute = minute < 10 ? "0" + minute : minute;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  var time = hour + ":" + minute + ":" + seconds + " " + session;
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+  var time = h + ":" + m + ":" + s + " " + session;
   document.getElementById("MyClockDisplay").innerText = time;
   document.getElementById("MyClockDisplay").textContent = time;
   t = setInterval(function () {
