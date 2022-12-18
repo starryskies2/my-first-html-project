@@ -1,6 +1,6 @@
 /** @format */
 
- //global variables
+//global variables
 let session = "AM";
 let t;
 const Cities = [
@@ -14,24 +14,20 @@ const Cities = [
 function random() {
   alert("i lied,it does something");
 }
+
 function times2() {
   let x = prompt("please enter a number and you will get the number times 2");
   let y = 2;
   let z = x * y;
   document.getElementById("result").innerHTML = z;
+  hideresult();
 }
 function times3() {
   let x = prompt("please enter a number and you will get the number times 2");
   let y = 3;
   let z = x * y;
   document.getElementById("result").innerHTML = z;
-}
-
-function divide() {
-  let x = prompt("please enter a number and you will get the number divided by 2");
-  let y = 2;
-  let z = x / y;
-  document.getElementById("result").innerHTML = z;
+  hideresult();
 }
 
 function hideresult() {
@@ -91,14 +87,14 @@ function showTime(hour, minute, seconds) {
   if (seconds <= 58) {
     seconds = seconds + 1;
   } else {
-    seconds = 0;
+    seconds = 1;
     minute = minute + 1;
   }
-  if (minute == 58) {
+  if (minute >= 58) {
     minute = 0;
     hour = hour + 1;
   }
-  if (hour == 24) {
+  if (hour >= 24) {
     hour = 0;
   }
 
@@ -117,11 +113,11 @@ function showTime(hour, minute, seconds) {
       seconds = 0;
       minute = minute + 1;
     }
-    if (minute == 58) {
+    if (minute >= 58) {
       minute = 0;
       hour = hour + 1;
     }
-    if (hour == 24) {
+    if (hour >= 24) {
       hour = 0;
     }
 
@@ -160,6 +156,6 @@ async function fetchTime(city) {
   const api = `https://www.timeapi.io/api/Time/current/zone?timeZone=${city}`;
   const response = await fetch(api);
   const data = await response.json();
-  const { hour, minute, seconds } = data;
-  showTime(hour, minute, seconds);
+  const {hour,minute,seconds} = data;
+  showTime(hour,minute,seconds);
 }
